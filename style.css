@@ -1,5 +1,5 @@
 :root {
-  --ink: #0d2b45;
+  --ink: #0e2925;
   --body: #22303f;
   --muted: #5c6b7d;
   --line: #e3e8ee;
@@ -10,7 +10,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --ink: #e8eef6; --body: #c7d2de; --muted: #93a1b1;
-    --line: #26303c; --blue: #6ea8fe; --bg: #0f151c; --card: #161e27;
+    --line: #26303c; --blue: #5ad0c2; --bg: #0f151c; --card: #161e27;
   }
 }
 * { box-sizing: border-box; }
