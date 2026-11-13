@@ -1,61 +1,80 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-app="hr">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>FirstPass HR — PHR &amp; SPHR Exam Prep · $4.99/month</title>
-<meta name="description" content="9,712 practice questions, 356 lessons and full-length PHR and SPHR simulations in the official formats. $4.99/month with a 3-day free trial. Daily Quiz free forever." />
-<!-- APP STORE LINK: when FirstPass HR is approved, replace every COMING_SOON href below with the App Store URL
-     and change the two badge labels from "Coming soon to the" / "App Store" to "Download on the" / "App Store". -->
+<title>FirstPass — SHRM &amp; HRCI Exam Prep Apps · $4.99/month</title>
+<meta name="description" content="Two apps, four certifications. FirstPass (SHRM-CP/SCP) and FirstPass HR (PHR/SPHR): 19,800+ original practice questions, full-length simulations, $4.99/month with a 3-day free trial." />
+<meta name="theme-color" content="#ffffff" />
 <link rel="icon" href="img/icon.webp" type="image/webp" />
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="FirstPass HR — PHR &amp; SPHR Exam Prep" />
-<meta property="og:description" content="Both HRCI exams. 9,712 questions, 356 lessons, full-length simulations. $4.99/month, 3-day free trial. Daily Quiz free forever." />
+<meta property="og:title" content="FirstPass — SHRM &amp; HRCI Exam Prep Apps" />
+<meta property="og:description" content="SHRM-CP/SCP and PHR/SPHR prep: 19,800+ original questions, full-length simulations, $4.99/month. 3-day free trial, free Daily Quiz forever." />
 <meta property="og:image" content="https://brandonpostlethwait.github.io/firstpass-hr-site/img/og.jpg" />
 <meta property="og:url" content="https://brandonpostlethwait.github.io/firstpass-hr-site/" />
 <meta name="twitter:card" content="summary_large_image" />
 <style>
+/* ---------- theme tokens: HR (teal) is the default, SHRM (blue) overrides --- */
 :root{
-  --g1:#14b8a6;--g2:#0f766e;--g3:#083a36;--gold:#f7b500;--green:#2fc474;
-  --ink:#0e2925;--body:#22303f;--muted:#5c6b7d;--line:#e3e8ee;--bg:#ffffff;--card:#f6faf9;--accent:#0f766e;
+  --gold:#f7b500;
+  --accent:#0f766e;--accent-deep:#083a36;
+  --tint:#e9f6f3;--tint-line:#cfe8e2;
+  --ink:#0e2925;--body:#22303f;--muted:#5c6b7d;--line:#e3e8ee;--bg:#ffffff;--card:#f6faf9;
+}
+html[data-app="shrm"]{
+  --accent:#1259b3;--accent-deep:#0a2f55;
+  --tint:#eaf2fc;--tint-line:#d3e3f7;
+  --ink:#0a1f33;--card:#f5f8fc;
 }
 @media (prefers-color-scheme:dark){
-  :root{--ink:#e8eef6;--body:#c7d2de;--muted:#93a1b1;--line:#26303c;--bg:#0f1514;--card:#151f1d;--accent:#5ad0c2}
+  :root{--ink:#e8eef6;--body:#c7d2de;--muted:#93a1b1;--line:#26303c;--bg:#0f1514;--card:#151f1d;--accent:#5ad0c2;--tint:#12302c;--tint-line:#1d4740}
+  html[data-app="shrm"]{--bg:#0d1320;--card:#131c2b;--line:#263142;--accent:#74aef5;--tint:#16263d;--tint-line:#23405f}
 }
+/* ---------- app-view switching ---------- */
+html[data-app="hr"] .only-shrm{display:none !important}
+html[data-app="shrm"] .only-hr{display:none !important}
+
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--body);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
 a{color:var(--accent)}
 .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
 
-/* hero */
-.hero{background:linear-gradient(135deg,var(--g1),var(--g2) 55%,var(--g3));color:#fff;padding:28px 0 0;overflow:hidden;position:relative}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:40px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.1rem;letter-spacing:-.01em;color:#fff;text-decoration:none;white-space:nowrap}
-.brand img{width:36px;height:36px;border-radius:9px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
-.nav a.small{color:#fff;opacity:.85;font-size:.92rem;text-decoration:none}
+/* nav */
+.topbar{border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.1rem;letter-spacing:-.01em;color:var(--ink);text-decoration:none;white-space:nowrap}
+.brand img{width:36px;height:36px;border-radius:9px;box-shadow:0 3px 10px rgba(10,30,40,.18)}
+.switch{display:inline-flex;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px}
+.switch button{appearance:none;background:none;border:0;cursor:pointer;color:var(--muted);font:inherit;font-size:.82rem;font-weight:700;padding:6px 12px;border-radius:999px;white-space:nowrap}
+.switch button.on{background:var(--accent);color:#fff}
+.switch button:not(.on):hover{color:var(--ink)}
+
+/* hero (white) */
+.hero{padding:56px 0 30px}
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
-.kicker{display:inline-block;background:var(--gold);color:var(--g3);font-weight:800;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:999px;margin-bottom:18px}
-h1{font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.05;margin:0 0 16px;font-weight:800;letter-spacing:-.02em}
-h1 .gold{color:var(--gold)}
-.lede{font-size:1.15rem;line-height:1.5;opacity:.95;max-width:34rem;margin:0 0 26px}
+.kicker{display:inline-block;background:var(--tint);border:1px solid var(--tint-line);color:var(--accent);font-weight:800;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:999px;margin-bottom:18px}
+h1{font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.05;margin:0 0 16px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+h1 .hl{color:var(--accent)}
+.lede{font-size:1.15rem;line-height:1.5;color:var(--body);max-width:34rem;margin:0 0 26px}
 .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-bottom:14px}
-.badge{display:inline-flex;align-items:center;gap:10px;background:#000;color:#fff;border:1.5px solid #a6a6a6;border-radius:12px;padding:9px 16px 9px 12px;text-decoration:none;line-height:1.1;transition:transform .12s}
+.badge{display:inline-flex;align-items:center;gap:10px;background:#000;color:#fff;border:1.5px solid #6e6e73;border-radius:12px;padding:9px 16px 9px 12px;text-decoration:none;line-height:1.1;transition:transform .12s}
 .badge:hover{transform:translateY(-1px)}
 .badge svg{width:28px;height:28px;flex:none}
 .badge small{display:block;font-size:.62rem;letter-spacing:.02em;opacity:.9}
 .badge b{display:block;font-size:1.25rem;font-weight:600;letter-spacing:-.01em}
-.notify{display:inline-flex;align-items:center;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:12px;padding:12px 18px;font-weight:700;text-decoration:none}
-.notify:hover{background:rgba(255,255,255,.22)}
-.fine{font-size:.86rem;opacity:.85;margin:0 0 36px}
-.pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:34px}
-.pill{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:5px 12px;font-size:.82rem;font-weight:700}
-.phone{display:flex;justify-content:center;align-items:center;padding:10px 0 34px}
-.phone img{width:min(100%,330px);height:auto;aspect-ratio:7/8;object-fit:cover;object-position:top;display:block;border-radius:22px;box-shadow:0 30px 60px rgba(0,0,0,.35);transform:rotate(-2deg)}
+.fine{font-size:.86rem;color:var(--muted);margin:0}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.pill{background:var(--tint);border:1px solid var(--tint-line);color:var(--accent);border-radius:999px;padding:5px 12px;font-size:.82rem;font-weight:700}
+
+/* big app icon, right side — this carries the blue/green identity */
+.biglogo{display:flex;justify-content:center;align-items:center;padding:8px 0}
+.biglogo .halo{background:radial-gradient(closest-side,var(--tint),transparent 72%);padding:34px;border-radius:50%}
+.biglogo img{display:block;width:min(100%,360px);height:auto;border-radius:22.5%;box-shadow:0 24px 60px rgba(10,30,40,.28)}
 
 /* stats */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:-1px 0 0;padding:26px 0;border-bottom:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .stat b{display:block;font-size:1.7rem;color:var(--ink);letter-spacing:-.02em;line-height:1.1}
 .stat span{font-size:.88rem;color:var(--muted)}
 
@@ -65,7 +84,7 @@ h2{color:var(--ink);font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.15;margin:0
 
 /* screenshots */
 .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.shot img{width:100%;height:auto;aspect-ratio:7/8;object-fit:cover;object-position:top;display:block;border-radius:18px;border:1px solid var(--line);box-shadow:0 14px 34px rgba(8,58,54,.18)}
+.shot img{width:100%;height:auto;aspect-ratio:7/8;object-fit:cover;object-position:top;display:block;border-radius:18px;border:1px solid var(--line);box-shadow:0 14px 34px rgba(8,30,54,.14)}
 .shot p{margin:12px 2px 0;font-size:.95rem}
 .shot p b{color:var(--ink)}
 
@@ -85,15 +104,16 @@ h2{color:var(--ink);font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.15;margin:0
 .track ul{margin:10px 0 0;padding-left:18px;font-size:.92rem}
 .track li{margin:3px 0}
 
-/* pricing */
-.price{background:linear-gradient(135deg,var(--g1),var(--g2) 55%,var(--g3));color:#fff;border-radius:22px;padding:34px;display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
-.price h2{color:#fff}
+/* pricing (light tinted card) */
+.price{background:var(--tint);border:1px solid var(--tint-line);border-radius:22px;padding:34px;display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+.price h2{margin-top:0}
 .price ul{margin:0 0 18px;padding-left:20px}
 .price li{margin:5px 0}
-.pricecard{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);border-radius:16px;padding:22px;text-align:center}
-.pricecard .now{font-size:3rem;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--gold);margin:6px 0}
-.pricecard .per{opacity:.9;margin-bottom:16px}
-.pricecard .foot{font-size:.8rem;opacity:.8;margin-top:12px}
+.pricecard{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:22px;text-align:center;color:var(--body);box-shadow:0 10px 30px rgba(10,30,40,.08)}
+.pricecard .was{font-size:.85rem;color:var(--muted)}
+.pricecard .now{font-size:3rem;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--accent);margin:6px 0}
+.pricecard .per{color:var(--muted);margin-bottom:16px}
+.pricecard .foot{font-size:.8rem;color:var(--muted);margin-top:12px}
 
 /* faq */
 details{border-top:1px solid var(--line);padding:14px 0}
@@ -107,56 +127,69 @@ details p{margin:10px 0 0;font-size:.95rem}
 footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--muted);font-size:.86rem}
 footer .links{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:14px}
 footer .links a{color:var(--muted)}
+footer p{margin:8px 0 0}
+
+/* sister-app card (bottom cross-promo) */
+.sister{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.sister img{width:56px;height:56px;border-radius:13px;flex:none;box-shadow:0 6px 16px rgba(0,0,0,.15)}
+.sister .t{flex:1;min-width:220px}
+.sister .t b{display:block;color:var(--ink);font-size:1.05rem;margin-bottom:2px}
+.sister .t p{margin:0;font-size:.93rem}
+.sister .go{display:inline-block;color:#fff;background:var(--accent);border:0;cursor:pointer;font:inherit;font-weight:700;padding:11px 18px;border-radius:12px;white-space:nowrap}
+.sister .go:hover{filter:brightness(1.08)}
 
 @media (max-width:820px){
-  .hero-grid{grid-template-columns:1fr;gap:20px}
-  .phone img{width:min(78%,280px);transform:none}
+  .hero{padding:36px 0 10px}
+  .hero-grid{grid-template-columns:1fr;gap:10px}
+  .biglogo{order:-1}
+  .biglogo .halo{padding:22px}
+  .biglogo img{width:min(52%,240px)}
   .stats{grid-template-columns:repeat(2,1fr)}
   .shots,.feats{grid-template-columns:1fr 1fr}
   .tracks,.price{grid-template-columns:1fr}
 }
 @media (max-width:540px){
   .shots,.feats{grid-template-columns:1fr}
-  .nav{margin-bottom:28px}
   section{padding:40px 0}
+  .switch button{padding:6px 9px;font-size:.76rem}
 }
-
-/* family switcher */
-.switch{display:inline-flex;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:3px;gap:2px}
-.switch a{color:#fff;text-decoration:none;font-size:.82rem;font-weight:700;padding:6px 12px;border-radius:999px;white-space:nowrap;opacity:.85}
-.switch a.on{background:#fff;color:var(--g3);opacity:1}
-.switch a:not(.on):hover{background:rgba(255,255,255,.14);opacity:1}
-.sister{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-.sister img{width:56px;height:56px;border-radius:13px;flex:none;box-shadow:0 6px 16px rgba(0,0,0,.15)}
-.sister .t{flex:1;min-width:220px}
-.sister .t b{display:block;color:var(--ink);font-size:1.05rem;margin-bottom:2px}
-.sister .t p{margin:0;font-size:.93rem}
-.sister .go{display:inline-block;color:#fff;background:#1259b3;text-decoration:none;font-weight:700;padding:11px 18px;border-radius:12px;white-space:nowrap}
-.sister .go:hover{filter:brightness(1.08)}
-@media (max-width:540px){.switch a{padding:6px 9px;font-size:.76rem}}
 </style>
 </head>
 <body>
 
-<header class="hero">
+<div class="topbar">
   <div class="wrap">
     <nav class="nav">
-      <a class="brand" href="./"><img src="img/icon.webp" alt="" width="36" height="36" />FirstPass HR</a>
-      <div class="switch" aria-label="FirstPass apps"><a class="on" href="./" aria-current="page">PHR / SPHR</a><a href="https://brandonpostlethwait.github.io/shrm-cp-study-site/">SHRM-CP / SCP</a></div>
+      <a class="brand" href="./">
+        <img class="only-hr" src="img/icon.webp" alt="" width="36" height="36" />
+        <img class="only-shrm" src="img/icon-shrm.webp" alt="" width="36" height="36" />
+        <span class="only-hr">FirstPass HR</span><span class="only-shrm">FirstPass</span>
+      </a>
+      <div class="switch" role="tablist" aria-label="Choose your certification">
+        <button type="button" data-app="shrm" role="tab">SHRM-CP / SCP</button>
+        <button type="button" data-app="hr" class="on" role="tab" aria-selected="true">PHR / SPHR</button>
+      </div>
+      <noscript><a href="https://brandonpostlethwait.github.io/shrm-cp-study-site/" style="font-size:.85rem">SHRM app site →</a></noscript>
     </nav>
-    <div class="hero-grid">
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+
+    <!-- ============ HERO: HR (PHR/SPHR) ============ -->
+    <div class="hero-grid only-hr">
       <div>
-        <span class="kicker">Launching soon on iPhone &amp; iPad</span>
-        <h1>Pass the PHR or SPHR<br /><span class="gold">on your first try.</span></h1>
+        <span class="kicker">Now on iPhone &amp; iPad</span>
+        <h1>Pass the PHR or SPHR<br /><span class="hl">on your first try.</span></h1>
         <p class="lede">9,712 practice questions, 356 lessons and full-length simulations in the official exam formats, for both HRCI certifications in one app. Pick your track, set your test date, and the plan builds itself.</p>
         <div class="cta-row">
-          <a class="badge" href="#notify" aria-label="Coming soon to the App Store">
+          <a class="badge" href="https://apps.apple.com/us/app/id6806087725" aria-label="Download FirstPass HR on the App Store">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.3 1.2 9.7.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.6-1-2.6-3.8zM14 5.4c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>
-            <span><small>Coming soon to the</small><b>App Store</b></span>
+            <span><small>Download on the</small><b>App Store</b></span>
           </a>
-          <a class="notify" id="notify" href="mailto:brandon.postlethwait@yahoo.com?subject=Notify%20me%20when%20FirstPass%20HR%20launches&body=Please%20let%20me%20know%20when%20FirstPass%20HR%20is%20on%20the%20App%20Store.%20I%27m%20studying%20for%20the%20">Get notified at launch</a>
+          <span class="fine">Free 3-day trial · then $4.99/month · cancel anytime</span>
         </div>
-        <p class="fine">Free 3-day trial · then $4.99/month · cancel anytime</p>
         <div class="pills">
           <span class="pill">9,712 QUESTIONS</span>
           <span class="pill">PHR + SPHR</span>
@@ -164,14 +197,36 @@ footer .links a{color:var(--muted)}
           <span class="pill">NO ADS, EVER</span>
         </div>
       </div>
-      <div class="phone">
-        <img src="img/hero-home.webp" alt="FirstPass HR home screen showing a 30-day exam score trend and a seven-day practice streak" width="560" height="640" />
+      <div class="biglogo"><div class="halo"><img src="img/icon-hr-big.webp" alt="FirstPass HR app icon" width="760" height="760" /></div></div>
+    </div>
+
+    <!-- ============ HERO: SHRM ============ -->
+    <div class="hero-grid only-shrm">
+      <div>
+        <span class="kicker">Testing in December? Start now.</span>
+        <h1>Both SHRM exams.<br /><span class="hl">One fair price.</span></h1>
+        <p class="lede">10,099 practice questions, 369 lessons and full-length timed exams for the SHRM-CP and SHRM-SCP, built to the 2026 BASK. Most prep apps charge $24.99 a month. FirstPass is $4.99.</p>
+        <div class="cta-row">
+          <a class="badge" href="https://apps.apple.com/us/app/id6792333505" aria-label="Download FirstPass on the App Store">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.3 1.2 9.7.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.6-1-2.6-3.8zM14 5.4c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>
+            <span><small>Download on the</small><b>App Store</b></span>
+          </a>
+          <span class="fine">Free 3-day trial · then $4.99/month · cancel anytime</span>
+        </div>
+        <div class="pills">
+          <span class="pill">10,099 QUESTIONS</span>
+          <span class="pill">CP + SCP</span>
+          <span class="pill">FREE DAILY QUIZ</span>
+          <span class="pill">NO ADS, EVER</span>
+        </div>
       </div>
+      <div class="biglogo"><div class="halo"><img src="img/icon-shrm-big.webp" alt="FirstPass app icon" width="760" height="760" /></div></div>
     </div>
   </div>
 </header>
 
-<div class="wrap">
+<!-- ============ STATS ============ -->
+<div class="wrap only-hr">
   <div class="stats">
     <div class="stat"><b>9,712</b><span>practice questions with explanations</span></div>
     <div class="stat"><b>356</b><span>lessons · 10 courses · ~38 hours</span></div>
@@ -179,8 +234,17 @@ footer .links a{color:var(--muted)}
     <div class="stat"><b>$4.99</b><span>per month after a 3-day free trial</span></div>
   </div>
 </div>
+<div class="wrap only-shrm">
+  <div class="stats">
+    <div class="stat"><b>10,099</b><span>practice questions with explanations</span></div>
+    <div class="stat"><b>369</b><span>lessons · 8 courses · ~39 hours</span></div>
+    <div class="stat"><b>2</b><span>exam tracks — SHRM-CP and SHRM-SCP</span></div>
+    <div class="stat"><b>$4.99</b><span>per month · others charge $24.99</span></div>
+  </div>
+</div>
 
-<section id="how">
+<!-- ============ HOW: HR ============ -->
+<section class="only-hr">
   <div class="wrap">
     <h2>Built to the real exams, not a generic question dump.</h2>
     <p class="sub">PHR and SPHR are different tests with different formats and different weightings. FirstPass HR mirrors each one, so practice feels like the real thing.</p>
@@ -201,7 +265,30 @@ footer .links a{color:var(--muted)}
   </div>
 </section>
 
-<section id="features" style="padding-top:0">
+<!-- ============ HOW: SHRM ============ -->
+<section class="only-shrm">
+  <div class="wrap">
+    <h2>Ten minutes a day. All the way to exam day.</h2>
+    <p class="sub">The winter testing window runs December 1 to February 15. Candidates who pass don't cram in November. They do questions every day from now until their date.</p>
+    <div class="shots">
+      <div class="shot">
+        <img src="img/shrm-shot-exam.webp" alt="A timed practice exam in progress" loading="lazy" width="560" height="640" />
+        <p><b>Train like it's test day.</b> Full-length timed exams in the real format, half of them situational judgment, with flag-and-review and a free Daily Quiz to keep the streak alive.</p>
+      </div>
+      <div class="shot">
+        <img src="img/shrm-shot-lesson.webp" alt="A lesson from the SHRM-SCP track with key takeaways" loading="lazy" width="560" height="640" />
+        <p><b>Learn what you're weak at.</b> 369 lessons with knowledge checks, a study plan paced to your exam date and weekly hours.</p>
+      </div>
+      <div class="shot">
+        <img src="img/shrm-shot-results.webp" alt="Practice exam results with a domain breakdown" loading="lazy" width="560" height="640" />
+        <p><b>Walk in knowing you'll pass.</b> Readiness by domain against the 70% benchmark, every answer explained, full attempt history.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES: HR ============ -->
+<section class="only-hr" style="padding-top:0">
   <div class="wrap">
     <h2>Everything in the kit</h2>
     <p class="sub">Choose PHR or SPHR on first launch. Switch tracks any time; progress is kept separately for each.</p>
@@ -210,13 +297,30 @@ footer .links a{color:var(--muted)}
       <div class="feat"><div class="ic">⚖️</div><b>Scenario Trainer</b><p>Coached practice for the judgment-style situational questions that decide most borderline scores.</p></div>
       <div class="feat"><div class="ic">📅</div><b>Study plan to your date</b><p>Set your test date and weekly hours. Get a week-by-week plan with checkable tasks and a countdown.</p></div>
       <div class="feat"><div class="ic">📚</div><b>Employment law library</b><p>54 statutes, enforcement agencies and landmark Supreme Court cases, each with a "why it matters" takeaway.</p></div>
-      <div class="feat"><div class="ic">🃏</div><b>Flashcards, acronyms, glossary</b><p>Flip-drills for HR's alphabet soup and a searchable glossary of the terms the exams lean on.</p></div>
-      <div class="feat"><div class="ic">✈️</div><b>Offline, synced, private</b><p>iPhone and iPad, dark mode, works offline. Progress follows your account. Delete everything from inside the app whenever you like.</p></div>
+      <div class="feat"><div class="ic">🔥</div><b>Home-screen widget</b><p>Your streak and today's study plan at a glance — no app launch required. New in 1.1.</p></div>
+      <div class="feat"><div class="ic">✈️</div><b>Offline, synced, private</b><p>iPhone and iPad, dark mode, works offline. No ads, no data selling. Delete everything from inside the app whenever you like.</p></div>
     </div>
   </div>
 </section>
 
-<section id="tracks" style="padding-top:0">
+<!-- ============ FEATURES: SHRM ============ -->
+<section class="only-shrm" style="padding-top:0">
+  <div class="wrap">
+    <h2>Everything in the kit</h2>
+    <p class="sub">Pick your exam on first launch and the whole app builds itself around it. Switch tracks any time.</p>
+    <div class="feats">
+      <div class="feat"><div class="ic">📝</div><b>Practice exams</b><p>Quick quiz, 1-hour, and full-length timed exams that mirror the real thing, with flag-and-review.</p></div>
+      <div class="feat"><div class="ic">⚖️</div><b>Situational-judgment trainer</b><p>5,078 SJT scenarios with coaching on why the strongest response is strongest. Half the real exam is SJT.</p></div>
+      <div class="feat"><div class="ic">📅</div><b>Adaptive study plan</b><p>Set your date and hours per week. Get a week-by-week plan with checkable tasks and a countdown.</p></div>
+      <div class="feat"><div class="ic">📈</div><b>Readiness by domain</b><p>People, Organization, Workplace, Behavioral competencies — see exactly where you stand against the 70% benchmark.</p></div>
+      <div class="feat"><div class="ic">📚</div><b>Reference library</b><p>77 glossary terms, 47 acronyms, 54 employment laws, agencies and Supreme Court cases in plain English.</p></div>
+      <div class="feat"><div class="ic">✈️</div><b>Works offline, syncs everywhere</b><p>iPhone, iPad, dark mode. Progress follows your account. Delete it all from inside the app whenever you like.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRACKS: HR ============ -->
+<section class="only-hr" style="padding-top:0">
   <div class="wrap">
     <h2>Two exams, two tracks</h2>
     <p class="sub">The SPHR shifts the weight from operations to leadership and strategy. Each track's question mix matches its own HRCI outline.</p>
@@ -249,7 +353,28 @@ footer .links a{color:var(--muted)}
   </div>
 </section>
 
-<section id="pricing" style="padding-top:0">
+<!-- ============ TRACKS: SHRM ============ -->
+<section class="only-shrm" style="padding-top:0">
+  <div class="wrap">
+    <h2>Two tracks, written at two altitudes</h2>
+    <p class="sub">The SCP isn't the CP with harder vocabulary. It tests judgment at the executive level, so our SCP track is written there.</p>
+    <div class="tracks">
+      <div class="track">
+        <h3>SHRM-CP track</h3>
+        <span class="n">5,079 questions · 179 lessons · ~18 hours</span>
+        <p>HR practice end to end at the operational level the exam tests: talent acquisition, total rewards, employee relations, employment law, the behavioral competencies.</p>
+      </div>
+      <div class="track">
+        <h3>SHRM-SCP track</h3>
+        <span class="n">5,020 questions · 190 lessons · ~21 hours</span>
+        <p>People strategy, organization design and M&amp;A, workforce analytics, global workforce strategy, ESG and human-capital disclosure, board-level judgment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING: HR ============ -->
+<section class="only-hr" style="padding-top:0">
   <div class="wrap">
     <div class="price">
       <div>
@@ -259,9 +384,9 @@ footer .links a{color:var(--muted)}
           <li><b>Pro:</b> all 9,712 questions, full-length simulations, all 356 lessons, the Scenario Trainer, law library and every practice tool, with cross-device sync.</li>
           <li>Try Pro free for 3 days. Cancel in your App Store settings any time.</li>
         </ul>
-        <a class="badge" href="#notify" aria-label="Coming soon to the App Store">
+        <a class="badge" href="https://apps.apple.com/us/app/id6806087725" aria-label="Download FirstPass HR on the App Store">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.3 1.2 9.7.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.6-1-2.6-3.8zM14 5.4c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>
-          <span><small>Coming soon to the</small><b>App Store</b></span>
+          <span><small>Download on the</small><b>App Store</b></span>
         </a>
       </div>
       <div class="pricecard">
@@ -275,24 +400,73 @@ footer .links a{color:var(--muted)}
   </div>
 </section>
 
-<section id="faq" style="padding-top:0">
+<!-- ============ PRICING: SHRM ============ -->
+<section class="only-shrm" style="padding-top:0">
+  <div class="wrap">
+    <div class="price">
+      <div>
+        <h2>Free to start. $4.99 for all of it.</h2>
+        <ul>
+          <li><b>Free, forever:</b> the Daily Quiz, your streak, your scores, the study plan. No card, no account required.</li>
+          <li><b>Pro:</b> all 10,099 questions, full-length exams, all 369 lessons, every practice tool, cross-device sync.</li>
+          <li>Try Pro free for 3 days. Cancel in your App Store settings any time.</li>
+        </ul>
+        <a class="badge" href="https://apps.apple.com/us/app/id6792333505" aria-label="Download FirstPass on the App Store">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.3 1.2 9.7.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.6-1-2.6-3.8zM14 5.4c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>
+          <span><small>Download on the</small><b>App Store</b></span>
+        </a>
+      </div>
+      <div class="pricecard">
+        <div class="was">Most SHRM prep apps: $24.99/mo</div>
+        <div class="now">$4.99</div>
+        <div class="per">per month · 3-day free trial</div>
+        <div>Both exams included.<br />No ads. We don't sell your data.</div>
+        <div class="foot">Auto-renews monthly unless cancelled at least 24 hours before the period ends. Managed in your Apple ID settings.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ: HR ============ -->
+<section class="only-hr" style="padding-top:0">
   <div class="wrap">
     <h2>Questions people ask</h2>
     <details><summary>Is this official HRCI material?</summary><p>No. FirstPass HR is independent study material written to HRCI's published exam content outlines. It is not affiliated with, endorsed by, or approved by HRCI, and our questions are not official exam items.</p></details>
     <details><summary>Which exam should I take?</summary><p>HRCI sets the eligibility rules. Broadly, the PHR is for operational HR professionals and the SPHR is for those in strategic or policy-making roles, with experience requirements that depend on your education. Check hrci.org before applying.</p></details>
     <details><summary>Does it cover both exams?</summary><p>Yes, as separate tracks with separate question banks, lessons, exam formats and progress. Choose on first launch and switch any time in Settings.</p></details>
-    <details><summary>When does it launch?</summary><p>FirstPass HR is in App Store review now. Use the "Get notified" button above and we'll email you the day it's live. Our SHRM-CP/SCP app, <a href="https://brandonpostlethwait.github.io/shrm-cp-study-site/">FirstPass</a>, is available today.</p></details>
-    <details><summary>Android?</summary><p>iPhone and iPad first. Android is in progress; email us and we'll let you know when it ships.</p></details>
+    <details><summary>Android?</summary><p>iPhone and iPad today. Android is on the roadmap; email us and we'll let you know when it ships.</p></details>
     <details><summary>Can I delete my account and data?</summary><p>Yes, from inside the app (Settings → Account → Delete), or <a href="delete-account.html">follow these steps</a>.</p></details>
   </div>
 </section>
 
-<section id="family" style="padding-top:0">
+<!-- ============ FAQ: SHRM ============ -->
+<section class="only-shrm" style="padding-top:0">
+  <div class="wrap">
+    <h2>Questions people ask</h2>
+    <details><summary>Is this official SHRM material?</summary><p>No. FirstPass is independent study material written to the public 2026 SHRM BASK. It is not affiliated with, endorsed by, or sponsored by SHRM, and our questions are not official exam items.</p></details>
+    <details><summary>When is the next testing window?</summary><p>The winter window runs December 1, 2026 to February 15, 2027. SHRM's standard application deadline for that window is December 24, 2026. Check shrm.org for current dates and fees before applying.</p></details>
+    <details><summary>Does it cover the SHRM-SCP, or just the CP?</summary><p>Both, as separate tracks. You choose on first launch and can switch in Settings. The SCP track has its own 5,020 senior-level questions and 190 lessons.</p></details>
+    <details><summary>Android?</summary><p>iPhone and iPad today. Android is on the roadmap; email us and we'll let you know when it ships.</p></details>
+    <details><summary>Can I delete my account and data?</summary><p>Yes, from inside the app (Settings → Account → Delete), or <a href="https://brandonpostlethwait.github.io/shrm-cp-study-site/delete-account.html">follow these steps</a>.</p></details>
+  </div>
+</section>
+
+<!-- ============ SISTER-APP CROSS-PROMO ============ -->
+<section class="only-hr" style="padding-top:0">
   <div class="wrap">
     <div class="sister">
       <img src="img/icon-shrm.webp" alt="" width="56" height="56" />
-      <div class="t"><b>Studying for the SHRM-CP or SHRM-SCP instead?</b><p>FirstPass covers both SHRM exams with 10,099 questions and 369 lessons, and it is on the App Store today. Same price.</p></div>
-      <a class="go" href="https://brandonpostlethwait.github.io/shrm-cp-study-site/">See FirstPass for SHRM →</a>
+      <div class="t"><b>Studying for the SHRM-CP or SHRM-SCP instead?</b><p>FirstPass covers both SHRM exams with 10,099 questions and 369 lessons. Same approach, same price.</p></div>
+      <button type="button" class="go js-switch" data-app="shrm">See FirstPass for SHRM →</button>
+    </div>
+  </div>
+</section>
+<section class="only-shrm" style="padding-top:0">
+  <div class="wrap">
+    <div class="sister">
+      <img src="img/icon.webp" alt="" width="56" height="56" />
+      <div class="t"><b>Studying for the PHR or SPHR instead?</b><p>FirstPass HR is the same approach for the HRCI exams: 9,712 questions, 356 lessons, full-length simulations in the official formats. Same price.</p></div>
+      <button type="button" class="go js-switch" data-app="hr">See FirstPass HR →</button>
     </div>
   </div>
 </section>
@@ -300,14 +474,53 @@ footer .links a{color:var(--muted)}
 <footer>
   <div class="wrap">
     <div class="links">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="delete-account.html">Delete your account</a>
+      <a class="only-hr" href="https://apps.apple.com/us/app/id6806087725">App Store</a>
+      <a class="only-shrm" href="https://apps.apple.com/us/app/id6792333505">App Store</a>
+      <a class="only-hr" href="privacy.html">Privacy Policy</a>
+      <a class="only-shrm" href="https://brandonpostlethwait.github.io/shrm-cp-study-site/privacy.html">Privacy Policy</a>
+      <a class="only-hr" href="delete-account.html">Delete your account</a>
+      <a class="only-shrm" href="https://brandonpostlethwait.github.io/shrm-cp-study-site/delete-account.html">Delete your account</a>
       <a href="mailto:brandon.postlethwait@yahoo.com">Support</a>
-      <a href="https://brandonpostlethwait.github.io/shrm-cp-study-site/">FirstPass for SHRM</a>
     </div>
-    <p>FirstPass HR is independent practice material. It is not affiliated with, endorsed by, or approved by HR Certification Institute (HRCI). PHR®, SPHR® and HRCI® are registered trademarks of HR Certification Institute. Exam formats and content-area weights are from HRCI's published exam content outlines.</p>
+    <p>FirstPass and FirstPass HR are independent practice material.</p>
+    <p>FirstPass HR is not affiliated with, endorsed by, or approved by HR Certification Institute (HRCI). PHR®, SPHR® and HRCI® are registered trademarks of HR Certification Institute. Exam formats and content-area weights are from HRCI's published exam content outlines.</p>
+    <p>FirstPass is not affiliated with, endorsed by, or sponsored by the Society for Human Resource Management (SHRM). SHRM®, SHRM-CP® and SHRM-SCP® are registered trademarks of SHRM. Competitor pricing observed on the US App Store, July 2026.</p>
   </div>
 </footer>
+
+<script>
+(function(){
+  var KEY='fp-app';
+  function setApp(app,updateHash){
+    if(app!=='hr'&&app!=='shrm')return;
+    document.documentElement.setAttribute('data-app',app);
+    try{localStorage.setItem(KEY,app)}catch(e){}
+    document.querySelectorAll('.switch button').forEach(function(b){
+      var on=b.getAttribute('data-app')===app;
+      b.classList.toggle('on',on);
+      b.setAttribute('aria-selected',on?'true':'false');
+    });
+    if(updateHash!==false){
+      try{history.replaceState(null,'','#'+(app==='shrm'?'shrm':'phr'))}catch(e){}
+    }
+  }
+  function fromHash(){
+    var h=(location.hash||'').replace('#','').toLowerCase();
+    if(h==='shrm'||h==='cp'||h==='scp')return 'shrm';
+    if(h==='phr'||h==='sphr'||h==='hr'||h==='hrci')return 'hr';
+    return null;
+  }
+  var saved=null;try{saved=localStorage.getItem(KEY)}catch(e){}
+  setApp(fromHash()||saved||'hr',false);
+  window.addEventListener('hashchange',function(){var a=fromHash();if(a)setApp(a,false)});
+  document.querySelectorAll('.switch button, .js-switch').forEach(function(b){
+    b.addEventListener('click',function(){
+      setApp(b.getAttribute('data-app'));
+      if(b.classList.contains('js-switch'))window.scrollTo({top:0,behavior:'smooth'});
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
